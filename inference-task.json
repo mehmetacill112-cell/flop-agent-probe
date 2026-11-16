@@ -1,0 +1,24 @@
+{
+  "purpose": "One source-grounded extraction task after gateway access is restored",
+  "source_url": "https://docs.flop.network/docs/agent-onboarding",
+  "source_checked_date": "2026-11-16",
+  "model": "qwen/qwen2.5-0.5b-instruct",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Extract the target date from this source sentence. Return only YYYY-MM-DD. Source: Public Testnet is targeted for 24 November 2026, subject to readiness."
+    }
+  ],
+  "max_tokens": 16,
+  "stream": false,
+  "max_cost_flop": 1,
+  "max_wait_ms": 10000,
+  "acceptance": {
+    "expected_output": "2026-11-24",
+    "requires_current_model_scope": true,
+    "requires_fresh_cost_estimate": true,
+    "requires_receipt_state": "settled",
+    "requires_settlement_evidence": true
+  },
+  "submitted": false
+}

@@ -1,0 +1,9 @@
+{
+  "package": "@flop-labs/sdk",
+  "version": "0.6.0",
+  "license": "MIT OR Apache-2.0",
+  "tarball": "https://registry.npmjs.org/@flop-labs/sdk/-/sdk-0.6.0.tgz",
+  "integrity": "sha512-TGzoXtBhyXDsP1ZyPp5a3zzVlB2F7GXSirxxZ4iuDEzlpz22WayxSpq1XRqq/ngLhK0+vvUHP3ygDLpyFAP9zw==",
+  "integrity_verified": true,
+  "quickstart_sha256": "459d5bd98e8eaaefd383b9088f6badc631f45870266d04095afbc5889484235c"
+}

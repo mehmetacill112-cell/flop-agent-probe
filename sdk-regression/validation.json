@@ -1,0 +1,17 @@
+{
+  "baseline": {
+    "exit_code": 1,
+    "tests": 11,
+    "pass": 4,
+    "fail": 7
+  },
+  "candidate": {
+    "exit_code": 0,
+    "tests": 11,
+    "pass": 11,
+    "fail": 0
+  },
+  "patch_applies_to_pinned_original": true,
+  "applied_patch_matches_candidate": true,
+  "runtime": "Node.js 26.7.0; Python 3.12.10; Windows"
+}

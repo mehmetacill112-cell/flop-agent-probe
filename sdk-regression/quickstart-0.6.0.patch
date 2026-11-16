@@ -1,0 +1,52 @@
+--- a/dist/quickstart.js
++++ b/dist/quickstart.js
+@@ -115,15 +115,8 @@
+             };
+         }
+         catch (error) {
+-            const durationMs = Date.now() - startTime;
+-            return {
+-                output: '',
+-                model: modelId,
+-                cost: 0,
+-                timestamp: new Date().toISOString(),
+-                verified: false,
+-                durationMs,
+-            };
++            // A rejected purchase must not become a successful empty result.
++            throw error;
+         }
+     }
+     /**
+@@ -415,9 +408,28 @@
+         const cfg = config ?? {};
+         const opts = options ?? {};
+         const agent = await FlopAgent.create(cfg);
+-        const result = await agent.inference(prompt, opts);
+-        await agent.shutdown();
+-        return result;
++        let failed = false;
++        let primaryError;
++        try {
++            return await agent.inference(prompt, opts);
++        }
++        catch (error) {
++            failed = true;
++            primaryError = error;
++            throw error;
++        }
++        finally {
++            try {
++                await agent.shutdown();
++            }
++            catch (cleanupError) {
++                if (failed) {
++                    throw new AggregateError([primaryError, cleanupError],
++                        'Inference and shutdown both failed', { cause: primaryError });
++                }
++                throw cleanupError;
++            }
++        }
+     }
+ }
+ // ── Helper Functions ──────────────────────────────────────────────────────
